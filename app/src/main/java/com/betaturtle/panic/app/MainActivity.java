@@ -1,9 +1,13 @@
 package com.betaturtle.panic.app;
 
 import android.app.Activity;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.betaturtle.panic.app.mysc.MyLocation;
 
 
 public class MainActivity extends Activity {
@@ -12,6 +16,17 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final TextView t1 = (TextView) findViewById(R.id.textview1);
+
+        new MyLocation().getLocation(this, new MyLocation.LocationResult() {
+            @Override
+            public void gotLocation(Location location) {
+                double la1 = location.getLatitude();
+                double lo1 = location.getLongitude();
+                t1.setText(Double.toString(la1)+", "+Double.toString(lo1));
+            }
+        });
     }
 
 
