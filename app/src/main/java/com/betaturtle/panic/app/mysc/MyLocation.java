@@ -27,11 +27,16 @@ public class MyLocation {
             lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
         //exceptions will be thrown if provider is not permitted.
-        try{gps_enabled=lm.isProviderEnabled(LocationManager.GPS_PROVIDER);}catch(Exception ex){}
-        try{network_enabled=lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);}catch(Exception ex){}
+        try{gps_enabled=lm.isProviderEnabled(LocationManager.GPS_PROVIDER);}
+        //TODO
+        catch(Exception ex){}
+        try{network_enabled=lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);}
+        //TODO
+        catch(Exception ex){}
 
         //don't start listeners if no provider is enabled
         if(!gps_enabled && !network_enabled)
+        //TODO : Need to check this condition and turn on the user :P
             return false;
 
         if(gps_enabled)
